@@ -1,0 +1,40 @@
+### Node / General
+node_modules
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS / Editor
+.DS_Store
+.AppleDouble
+.LSOverride
+.idea/
+.vscode/
+
+### Environment files
+.env
+.env.*
+.env.local
+.env.*.local
+
+### Next.js
+.next/
+out/
+.vercel/
+.turbo/
+
+# Build outputs
+dist/
+coverage/
+.nyc_output/
+
+### TypeScript
+*.tsbuildinfo
+
+### Caches
+.eslintcache
+.swc/
+.cache/

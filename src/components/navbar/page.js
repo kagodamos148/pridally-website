@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 
 export function NavbarDemo() {
   return (
-    <div className="w-full flex flex-col justify-center w-full overflow-x-hidden mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="w-full flex flex-col justify-center overflow-x-hidden mx-auto px-4 sm:px-6 lg:px-8">
       <Navbar/>
     </div>
   );
@@ -58,8 +58,8 @@ function Navbar({ className }) {
             </Link>
           </div>
 
-          {/* Center: Menu Items */}
-          <div className="hidden md:flex space-x-6 justify-center font-medium">
+          {/* Center: Primary Links */}
+          <div className="hidden md:flex items-center justify-center gap-2 lg:gap-4">
             <Menu setActive={setActive}>
               <MenuItem setActive={setActive} active={active} item="Services">
                 <div className="text-sm grid grid-cols-3 gap-10 p-4">
@@ -102,6 +102,8 @@ function Navbar({ className }) {
                   <HoveredLink href="/founders">Founders</HoveredLink>
                 </div>
               </MenuItem>
+              <MenuItem setActive={setActive} active={active} item="Contact">
+              </MenuItem>
             </Menu>
           </div>
 
@@ -112,7 +114,7 @@ function Navbar({ className }) {
                 <button>
                   <Link 
                     href="/signin" 
-                    className="flex items-center gap-2 font-medium button_top py-1 px-3 sm:py-3 sm:px-6 text-sm border border-solid border-black shadow-[-7px_7px_0px_#000000] text-gray-700 active:shadow-[0px] hover:font-bold dark:border-white dark:text-white dark:shadow-[-7px_7px_0px_#ffffff] transition-all duration-200"
+                    className="px-4 sm:px-6 py-2 sm:py-3 text-sm font-medium bg-white text-gray-800 rounded-xl border-2 border-gray-200 hover:border-purple-400 transition-all duration-200 transform hover:-translate-y-0.5"
                   >
                     Sign In
                   </Link>
@@ -120,7 +122,7 @@ function Navbar({ className }) {
                 <button>
                   <Link 
                     href="/signup" 
-                    className="bg-black flex items-center gap-2 font-medium button_top py-1 px-3 sm:py-3 sm:px-6 text-sm border border-solid border-black shadow-[-7px_7px_0px_#999999] text-white active:shadow-[0px] hover:font-bold dark:bg-white dark:text-black transition-all duration-200"
+                    className="px-4 sm:px-6 py-2 sm:py-3 text-sm font-medium rounded-xl text-white bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 transition-all duration-200 transform hover:-translate-y-0.5 shadow-md"
                   >
                     Sign Up
                   </Link>
@@ -142,7 +144,7 @@ function Navbar({ className }) {
                 {/* Logout Button */}
                 <button
                   onClick={handleLogout}
-                  className="flex items-center gap-2 font-medium button_top py-1 px-3 sm:py-3 sm:px-6 text-sm border border-solid border-black shadow-[-7px_7px_0px_#000000] text-gray-700 active:shadow-[0px] hover:font-bold dark:border-white dark:text-white dark:shadow-[-7px_7px_0px_#ffffff] transition-all duration-200"
+                  className="px-4 sm:px-6 py-2 sm:py-3 text-sm font-medium bg-white text-gray-800 rounded-xl border-2 border-gray-200 hover:border-purple-400 transition-all duration-200 transform hover:-translate-y-0.5"
                 >
                   Sign Out
                 </button>

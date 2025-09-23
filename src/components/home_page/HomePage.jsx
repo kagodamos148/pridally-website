@@ -10,6 +10,9 @@ import {
   FaHeart,
 } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
+import logo from "../../../assets/logo.png";
+import rainbowLogo from "../../../assets/Rainbow Minimalist Pride Month Logo.png";
 
 const healthItems = [
   { title: "Physical", icon: <FaHeartbeat size={36} className="text-red-500" /> },
@@ -123,6 +126,69 @@ const HomePage = () => {
           </div>
         </section>
 
+        {/* Alternating Image/Text Sections */}
+        <section className="py-24 bg-white">
+          <div className="container mx-auto px-4">
+            {[
+              {
+                title: "Affirming care for LGBTQIA+ lives",
+                body:
+                  "Tools and resources designed with queer experiences at the center. Feel seen, supported, and celebrated while you build healthier habits.",
+                image: rainbowLogo,
+              },
+              {
+                title: "Mindfulness made approachable",
+                body:
+                  "Bite-sized meditations and gentle prompts to help reduce stress, improve sleep, and find calm—anytime you need a breather.",
+                image: logo,
+              },
+              {
+                title: "Grow with guided exercises",
+                body:
+                  "Structured check-ins and journaling to build self-awareness. Track your progress and discover insights that support real-life change.",
+                image: rainbowLogo,
+              },
+            ].map((section, index) => {
+              const isReversed = index % 2 === 1;
+              return (
+                <div
+                  key={section.title}
+                  className={`grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center mb-20 ${
+                    index === 2 ? "mb-0" : ""
+                  }`}
+                >
+                  <div className={`${isReversed ? "md:order-2" : ""}`}>
+                    <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                      {section.title}
+                    </h3>
+                    <p className="text-lg text-gray-700 leading-relaxed">
+                      {section.body}
+                    </p>
+                  </div>
+                  {section.image ? (
+                    <div className={`${isReversed ? "md:order-1" : ""}`}>
+                      <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-purple-50 to-pink-50">
+                        <Image
+                          src={section.image}
+                          alt={section.title}
+                          fill
+                          className="object-contain p-6"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          priority={index === 0}
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <div className={`${isReversed ? "md:order-1" : ""}`}>
+                      <div className="h-64 rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50" />
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
         {/* Moving Cards Section */}
         <section className="py-32 bg-gradient-to-b from-white via-purple-50/20 to-white relative overflow-hidden">
           <div className="container mx-auto px-4">
@@ -222,6 +288,41 @@ const HomePage = () => {
               </motion.div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Collaborators */}
+      <section className="py-24 bg-gradient-to-b from-white via-purple-50/20 to-white relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600 mb-12">
+            Collaborators
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 md:gap-8 items-center">
+            {["Community Clinic","Queer Health Org","University Lab","LGBTQ+ NGO","Wellness Partner","Research Group"].map((name) => (
+              <div key={name} className="h-24 rounded-xl bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-700 font-medium hover:shadow-md transition-shadow">
+                {name}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Founders */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center text-gray-900 mb-4">Founders</h2>
+          <p className="text-center text-gray-700 max-w-2xl mx-auto mb-12">Built by LGBTQIA+ folks and allies to create a stigma-free, empowering health companion.</p>
+          <div className="grid gap-8 md:grid-cols-3">
+            {[{name:"Rakesh",role:"Founder & Product"},{name:"Alex",role:"Clinical Lead"},{name:"Sam",role:"Engineering"}].map((p)=> (
+              <div key={p.name} className="p-8 rounded-2xl bg-white shadow-xl border border-purple-100 text-center">
+                <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-r from-purple-400 to-pink-400 flex items-center justify-center text-white text-2xl font-bold mb-4">
+                  {p.name.charAt(0)}
+                </div>
+                <h3 className="text-xl font-semibold">{p.name}</h3>
+                <p className="text-gray-600">{p.role}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
